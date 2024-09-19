@@ -1,27 +1,36 @@
+#import "../../utils/math.typ": *
+
 = Символы Ландау
 
-/ $f(x) = O(g(x))$:
+#def[
+    #defitem[$f(x) = O(g(x)):$]
     $
         exists C > 0
         exists x_0 >= 0:
         forall x >= x_0:
         abs(f(x)) <= C abs(g(x))
     $
+]
 
-/ $f(x) = o(g(x))$:
+#def[
+    #defitem[$f(x) = o(g(x)):$]
     $
         forall epsilon > 0
         exists x_0:
         forall x >= x_0:
         abs(f(x)) <= epsilon abs(g(x))
     $
+]
 
-/ $f(x) = Theta(g(x))$:
+
+#def[
+    #defitem[$f(x) = Theta(g(x)):$]
     $
         exists 0 < C_1 <= C_2
         exists x_0:
         C_1 abs(g(x)) <= abs(f(x)) <= C_2 abs(g(x))
     $
+]
 
 == Примеры
 
