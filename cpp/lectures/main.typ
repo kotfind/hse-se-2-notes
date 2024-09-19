@@ -1,5 +1,5 @@
-#import "../../utils/template.typ": conf
-#import "../../utils/datestamp.typ": datestamp
+#import "/utils/template.typ": conf
+#import "/utils/datestamp.typ": datestamp
 
 #show: body => conf(
     title: "C++",

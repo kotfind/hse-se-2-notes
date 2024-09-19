@@ -1,4 +1,4 @@
-#import "../../utils/math.typ": *
+#import "/utils/math.typ": *
 
 = Геометрическое определение вероятности
 

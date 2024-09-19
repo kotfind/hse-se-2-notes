@@ -1,3 +1,5 @@
+#import "/utils/math.typ": *
+
 = Команда
 
 Команда:
