@@ -12,3 +12,59 @@
 }
 
 // TODO: defenitions list
+
+#let blk(
+    title: none,
+    body,
+) = context {
+    let has_title = if type(title) == str or type(title) == content {
+        true
+    } else if title == none {
+        false
+    } else {
+        panic("title must be content or string, not " + type(title))
+    }
+
+    let stroke = black + 0.5pt
+    let padding = 10pt
+    let title_padding = 5pt
+
+    let title_blk = block(
+        inset: title_padding,
+        radius: title_padding,
+        stroke: stroke,
+        fill: white,
+        strong(title),
+    )
+
+    let title_hei = measure(title_blk).height
+
+    if has_title {
+        v(5pt)
+    }
+    block(
+        inset: padding,
+        radius: padding,
+        stroke: stroke,
+        width: 100%,
+        {
+            if has_title {
+                place(
+                    top + left,
+                    dy: -title_hei / 2 - padding,
+                    dx: -2 * padding,
+                    title_blk,
+                )
+                v(5pt)
+            }
+            body
+        }
+    )
+}
+
+#let proof(
+    supplement: "Док-во",
+    body
+) = {
+    blk(title: "Док-во", body)
+}

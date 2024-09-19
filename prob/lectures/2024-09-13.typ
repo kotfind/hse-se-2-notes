@@ -56,40 +56,37 @@ cal(A) -> RR^1$ --- вероятность, если:
 == Свойства $P(A)$
 
 + $P(overline(A)) = 1 - P(A)$
-
-    Док-во:
-    
-    $ Omega = A + overline(A) $
-    $ A dot overline(A) = emptyset $
-    $ 1 = P(Omega) = P(A + overline(A)) = P(A) + P(overline(A)) $
+    #proof[
+        $ Omega = A + overline(A) $
+        $ A dot overline(A) = emptyset $
+        $ 1 = P(Omega) = P(A + overline(A)) = P(A) + P(overline(A)) $
+    ]
 
 + $P(emptyset) = 1 - P(Omega) = 0$
 + $A subset B => P(A) <= P(B)$
-
-    Док-во:
-    
-    $ B = A + (B \\ A) $
-    $ P(B) = P(A + (B \\ A)) = P(A) + underbrace(P(B \\ A), >=0) $
+    #proof[
+        $ B = A + (B \\ A) $
+        $ P(B) = P(A + (B \\ A)) = P(A) + underbrace(P(B \\ A), >=0) $
+    ]
 
 + $ forall A: 0 <= P(A) <= 1 $
 
 + Теорема сложения: $P(A + B) = P(A) + P(B) - P(A dot B)$
+    #proof[
+        $ A = A Omega = A B + A overline(B) $
+        $ B = B Omega = A B + overline(A) B $
+        $ A + B = underbrace(
+                A B + A overline(B) + overline(A) B,
+                "попарно несовместны"
+            ) $
 
-    Док-во:
-
-    $ A = A Omega = A B + A overline(B) $
-    $ B = B Omega = A B + overline(A) B $
-    $ A + B = underbrace(
-            A B + A overline(B) + overline(A) B,
-            "попарно несовместны"
-        ) $
-
-    $ P(A) = P(A B) + P(A overline(B)) => P(A) - P(A B) = P(A overline(B)) $
-    $ P(B) = P(A B) + P(overline(A) B) => P(B) - P(A B) = P(overline(A) B) $
-    $ P(A + B)
-        = P(A B) + P(A overline(B)) + P(overline(A) B) 
-        = P(A B) + P(A) - P(A B) + P(B) - P(A B)
-        = P(A) + P(B) - P(A B) $
+        $ P(A) = P(A B) + P(A overline(B)) => P(A) - P(A B) = P(A overline(B)) $
+        $ P(B) = P(A B) + P(overline(A) B) => P(B) - P(A B) = P(overline(A) B) $
+        $ P(A + B)
+            = P(A B) + P(A overline(B)) + P(overline(A) B) 
+            = P(A B) + P(A) - P(A B) + P(B) - P(A B)
+            = P(A) + P(B) - P(A B) $
+    ]
 
 + Обобщение теоремы сложения:
     $ P(underbrace(A_1 + A_2, A) + underbrace(A_3, B))
@@ -121,4 +118,3 @@ $ P(A|B) = P(A B) / P(B) $
 ]
 
 Любые несовместные события зависимы
-// TODO: proof utils
