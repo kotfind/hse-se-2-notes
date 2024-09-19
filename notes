@@ -1,0 +1,151 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+EXEC="$0"
+
+usage() {
+cat << END 1>&2
+Usage:
+    $EXEC help
+    $EXEC <MODE> [OPTIONS] [DIR]
+
+Description:
+    Compiles notes in <DIR>. <DIR> must contain main.typ file.
+    A name of output file is generated from input file's metadata.
+    Using current directory if <DIR> is not provided.
+
+Modes:
+    help       Print this message.
+    compile    Compile a note in <DIR>.
+    open       Compiles and opens note in <DIR>.
+    name       Prints output file name for note in <DIR>.
+
+Options:
+    -r    Recurcievly run for all sutable subdiectroies of <DIR>.
+END
+}
+
+# args: scripts_args
+# globals defined: mode, is_recursive, dir
+parse_args() {
+    case "$1" in
+        'help')
+            usage
+            exit 0
+            ;;
+
+        'name')
+            mode='name'
+            ;;
+
+        'compile')
+            mode='compile'
+            ;;
+
+        'open')
+            mode='open'
+            ;;
+
+        *)
+            echo "error: undefined mode '$1'" 1>&2
+            usage
+            exit 1
+            ;;
+    esac
+
+    is_recursive=false
+    OPTIND=2
+    while getopts ':r' arg; do
+        case "$arg" in
+            'r')
+                is_recursive=true
+                ;;
+
+            *)
+                echo "error: undefined flag '$arg'" 1>&2
+                usage
+                exit 1
+                ;;
+        esac
+    done
+
+    dir="${!OPTIND}"
+
+    if [ -z "$dir" ]; then
+        dir='.'
+    fi
+}
+
+# globals used: dir
+# globlas defined: typst_file
+get_typst_file() {
+    if [ ! -d "$dir" ]; then
+        echo "error: '$dir' is not a directory" 1>&2
+        exit 1
+    fi
+
+    typst_file="$dir/main.typ"
+
+    if [ ! -f "$typst_file" ]; then
+        echo "error: '$dir' does not contain a main.typ file" 1>&2
+        exit 1
+    fi
+}
+
+# globals used: dir, typst_file
+# globals defined: output_file
+get_output_file() {
+    local document_info="$(typst query --root . "$typst_file" '<document_info>' --field 'value')"
+
+    if [ -z "$document_info" ] || [ "$(echo "$document_info" | jq -r 'length')" == '0' ]; then
+        echo 'error: failed to read document info' 1>&2
+        exit 1
+    fi
+
+    local title="$(echo "$document_info" | jq -r '.[0].title')"
+
+    if [ -z "$title" ]; then
+        echo 'error: failed to get document title' 1>&2
+        exit 1
+    fi
+
+    local subtitle="$(echo "$document_info" | jq -r '.[0].subtitle')"
+
+    if [ -z "$subtitle" ]; then
+        echo 'error: failed to get document subtitle' 1>&2
+        exit 1
+    fi
+
+    output_file="$dir/${title// /_}_${subtitle// /_}.pdf"
+}
+
+main() {
+    parse_args "$@"
+
+    if [ "$is_recursive" == true ]; then
+        fd 'main.typ' "$dir" -x "$EXEC" "$mode" '{//}'
+        exit 0
+    fi
+
+    get_typst_file
+    get_output_file
+
+    if [ "$mode" == 'name' ]; then
+        echo "$output_file"
+    fi
+
+    if [ "$mode" == 'compile' ] || [ "$mode" == 'open' ]; then
+        echo "Compiling '$typst_file' into '$output_file'..."
+        typst compile --root . "$typst_file" "$output_file"
+        echo 'Compilation successful'
+    fi
+
+    if [ "$mode" == 'open' ]; then
+        echo "Opening '$output_file'..."
+        xdg-open "$output_file" > /dev/null 2>&1 &
+    fi
+}
+
+main "$@"
