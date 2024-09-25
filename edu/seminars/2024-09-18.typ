@@ -104,7 +104,6 @@
 Помогает формулировать ПРО
 
 #figure(
-    caption: [],
     table(
         columns: 3,
         align: (center, left, left),
