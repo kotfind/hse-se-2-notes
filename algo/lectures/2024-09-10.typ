@@ -68,9 +68,9 @@ Max глубина $= log_b n$
 
 $
     T(n)
-    &= sum^(log_b n)_(k = 0) O(a^i (n/(b^i))^c) \
-    &= O(sum^(log_b n)_(k = 0) a^i (n/(b^i))^c) \
-    &= O(n^c sum^(log_b n)_(k = 0) (a/(b^c))^i)
+    = sum^(log_b n)_(k = 0) O(a^i (n/(b^i))^c)
+    = O(sum^(log_b n)_(k = 0) a^i (n/(b^i))^c)
+    = O(n^c sum^(log_b n)_(k = 0) (a/(b^c))^i)
 $
 
 Let $q = a/(b^c)$
@@ -79,10 +79,10 @@ $
     q < 1:
     a < b^c <=>
     c > log_b a: \
-    O(n^c sum_i q^i) \
-    &<= O(n^c sum^infinity_i q^i) \
-    &= O(n^c dot 1/(1-q)) \
-    &= O(n^c)
+    O(n^c sum_i q^i)
+    <= O(n^c sum^infinity_i q^i)
+    = O(n^c dot 1/(1-q))
+    = O(n^c)
 $
 
 $
@@ -92,13 +92,13 @@ $
 
 $
     q = 1:
-    O(n^c dot (a/(b^c))^(log_b n)) \
-    &= O(n^c dot (a^(log_b n))/(b^(c dot log_b n))) \
-    &= O(n^c dot (a^(log_b n))/(n^c)) \
-    &= O(a^(log_b n)) \
-    &= O(a^((log_a n)/(log_a b))) \
-    &= O(n^(1/(log_a b))) \
-    &= O(n^(log_b a))
+    O(n^c dot (a/(b^c))^(log_b n))
+    = O(n^c dot (a^(log_b n))/(b^(c dot log_b n)))
+    = O(n^c dot (a^(log_b n))/(n^c)) = \
+    = O(a^(log_b n))
+    = O(a^((log_a n)/(log_a b)))
+    = O(n^(1/(log_a b)))
+    = O(n^(log_b a))
 $
 
 == Примеры
