@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+output="Чубий_Взгляд_кролика_Вопросы_по_книге.pdf"
+
+typst compile main.typ "$output"
+zathura "$output"
