@@ -24,11 +24,12 @@ Modes:
 
 Options:
     -r    Recurcievly run for all sutable subdiectroies of <DIR>.
+    -o    Explicitly specify output file name.
 END
 }
 
 # args: scripts_args
-# globals defined: mode, is_recursive, dir
+# globals defined: mode, is_recursive, dir, output_file
 parse_args() {
     case "$1" in
         'help')
@@ -56,11 +57,16 @@ parse_args() {
     esac
 
     is_recursive=false
+    output_file=""
     OPTIND=2
-    while getopts ':r' arg; do
+    while getopts ':ro:' arg; do
         case "$arg" in
             'r')
                 is_recursive=true
+                ;;
+
+            'o')
+                output_file="$OPTARG"
                 ;;
 
             *)
@@ -94,9 +100,13 @@ get_typst_file() {
     fi
 }
 
-# globals used: dir, typst_file
+# globals used: dir, typst_file, output_file
 # globals defined: output_file
 get_output_file() {
+    if [ ! -z "$output_file" ]; then
+        return
+    fi
+
     local document_info="$(typst query --root . "$typst_file" '<document_info>' --field 'value')"
 
     if [ -z "$document_info" ] || [ "$(echo "$document_info" | jq -r 'length')" == '0' ]; then
