@@ -24,17 +24,20 @@
 
     // Print stamp
     let stroke = red + 0.5pt;
-    grid(
-        columns: (1fr, auto, 1fr),
-        align: horizon + center,
-        line(length: 100%, stroke: stroke),
-        block(
-            inset: 5pt,
-            radius: 5pt,
-            stroke: stroke,
-            date.display()
-        ),
-        line(length: 100%, stroke: stroke),
+    block(
+        breakable: false,
+        grid(
+            columns: (1fr, auto, 1fr),
+            align: horizon + center,
+            line(length: 100%, stroke: stroke),
+            block(
+                inset: 5pt,
+                radius: 5pt,
+                stroke: stroke,
+                date.display()
+            ),
+            line(length: 100%, stroke: stroke),
+        )
     )
 }
 
@@ -61,7 +64,6 @@
             let date = item.value
             let loc = item.location()
              
-            // FIXME: grid is overkill
             let data = grid(
                 columns: (auto, 1fr),
                 align: horizon + center,

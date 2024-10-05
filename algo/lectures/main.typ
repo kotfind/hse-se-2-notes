@@ -9,7 +9,6 @@
     body,
 )
 
-
 #datestamp("2024-09-03")
 #include "2024-09-03.typ"
 
