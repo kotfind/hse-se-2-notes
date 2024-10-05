@@ -56,6 +56,7 @@
 
     // Set language and font size
     set text(lang: "ru", size: 11pt)
+    set par(justify: true)
 
     // Title page
     align(center + horizon, [
