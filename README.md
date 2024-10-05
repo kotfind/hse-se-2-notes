@@ -2,13 +2,13 @@
 
 *Предмет* | *Лекции* | *Семинары* | *ДЗ*
  -------- |:--------:|:----------:|:----:
-Алгоритмы и структуры данных | [link](algo/lectures/) | [link](algo/seminars/) |
-Групповая динамика | [~link~](group_dynamics/lectures/) | |
-Основы операционных систем | [link](os/lectures/) | [link](os/seminars/) |
-Программирование на С++ | [link](cpp/lectures/) | |
-Разработка на Андроид (НИС) | [~link~](android/lectures/) | |
-Современное образование (майнор) | [~link~](edu/lectures/) | [link](edu/seminars/) | [link](edu/homeworks/)
-Теория вероятностей | [link](prob/lectures/) | [link](prob/seminars/) | [link](prob/homeworks/)
+Алгоритмы и структуры данных | [link](algo/lectures/Алгоритмы_Лекции.pdf) | [link](algo/seminars/Алгоритмы_Семинары.pdf) |
+Групповая динамика | [~link~](group_dynamics/lectures/Групповая_динамика_Лекции.pdf) | |
+Основы операционных систем | [link](os/lectures/Основы_операционных_систем_Лекции.pdf) | [link](os/seminars/Основы_операционных_систем_Семинары.pdf) |
+Программирование на С++ | [link](cpp/lectures/C++_Лекции.pdf) | |
+Разработка на Андроид (НИС) | [~link~](android/lectures/Android_Лекции.pdf) | |
+Современное образование (майнор) | [~link~](edu/lectures/Современное_образование_Лекции.pdf) | [link](edu/seminars/Совеменное_образование_Семинары.pdf) | [link](edu/homeworks/)
+Теория вероятностей | [link](prob/lectures/Теория_Вероятностей_Лекции.pdf) | [link](prob/seminars/Теория_Вероятностей_Семинары.pdf) | [link](prob/homeworks/Теория_Вероятностей_Домашние_задания.pdf)
 
 Зачеркнуты ссылки на те конспекты, которые я больше не обновляю.
 
