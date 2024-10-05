@@ -4,6 +4,7 @@
 #show: body => conf(
     title: "Алгоритмы",
     subtitle: "Лекции",
+    author: "Савва Чубий, БПИ233",
     year: [2024--2025],
     body,
 )

@@ -43,10 +43,18 @@
 #let conf(
     title: none,
     subtitle: none,
+    author: none,
     year: none,
     body
 ) = {
+    let full_title = [#title. #subtitle]
+
     // Set metadata
+    set document(
+        title: full_title,
+        author: author,
+    )
+
     [
         #metadata((
             title: title,
@@ -60,9 +68,9 @@
 
     // Title page
     align(center + horizon, [
-        #text(30pt, weight: "bold", title)
+        #text(30pt, weight: "bold", full_title)
 
-        #text(25pt, subtitle)
+        #text(25pt, author)
 
         #text(20pt, year)
     ])
@@ -74,7 +82,7 @@
     // Page style
     set page(
         header: align(center)[
-            #title. #subtitle
+            #full_title
             #line(length: 100%, stroke: 0.5pt)
         ],
         footer: align(center, {
