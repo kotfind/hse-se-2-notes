@@ -45,6 +45,7 @@
     subtitle: none,
     author: none,
     year: none,
+    outline_opts: none,
     body
 ) = {
     let full_title = [#title. #subtitle]
@@ -76,7 +77,7 @@
     ])
 
     // Outline
-    datestamped_outline()
+    datestamped_outline(..outline_opts)
     pagebreak(weak: true)
 
     // Page style
