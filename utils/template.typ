@@ -48,11 +48,9 @@
     outline_opts: none,
     body
 ) = {
-    let full_title = [#title. #subtitle]
-
     // Set metadata
     set document(
-        title: full_title,
+        title: [#title. #subtitle],
         author: author,
     )
 
@@ -69,7 +67,11 @@
 
     // Title page
     align(center + horizon, [
-        #text(30pt, weight: "bold", full_title)
+        #text(30pt, weight: "bold")[
+            #title
+
+            #subtitle
+        ]
 
         #text(25pt, author)
 
@@ -83,7 +85,7 @@
     // Page style
     set page(
         header: align(center)[
-            #full_title
+            [#title. #subtitle]
             #line(length: 100%, stroke: 0.5pt)
         ],
         footer: align(center, {

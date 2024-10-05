@@ -6,6 +6,9 @@
     subtitle: "Семинары",
     author: "Савва Чубий, БПИ233",
     year: [2024--2025],
+    outline_opts: (
+        depth: 1,
+    ),
     body,
 )
 
