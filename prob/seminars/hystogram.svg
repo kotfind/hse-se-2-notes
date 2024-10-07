@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="152.11861mm"
+   height="107.41953mm"
+   viewBox="0 0 152.11861 107.41953"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="hystogram.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.3153571"
+     inkscape:cx="259.62531"
+     inkscape:cy="195.00408"
+     inkscape:window-width="1364"
+     inkscape:window-height="745"
+     inkscape:window-x="0"
+     inkscape:window-y="21"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="false" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-30.273373,-88.845828)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264999"
+       d="M 30.273373,182.69436 H 164.3828"
+       id="path1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264999"
+       d="M 58.490291,182.56186 V 92.105484"
+       id="path2" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:Serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0"
+       x="58.490292"
+       y="92.105492"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265"
+         x="58.490292"
+         y="92.105492">f(x)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:Serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0"
+       x="164.3828"
+       y="182.69435"
+       id="text5"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.265"
+         x="164.3828"
+         y="182.69435"
+         id="tspan6">x</tspan></text>
+    <path
+       style="fill:none;stroke-width:0.264999;stroke:#000000;stroke-opacity:1"
+       d="m 58.622789,174.62479 h 5.819854 v -10.8945 h 6.131468 v -13.0121 h 6.22654 V 138.7013 h 6.675776 v -12.9565 h 6.835399 v 8.04675 H 101.9092 v 9.99918 h 5.90658 v 9.71511 h 6.38507 v 29.18852"
+       id="path3" />
+  </g>
+</svg>

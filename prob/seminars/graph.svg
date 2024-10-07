@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="152.11861mm"
+   height="107.41953mm"
+   viewBox="0 0 152.11861 107.41953"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="graph.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.3153571"
+     inkscape:cx="259.62531"
+     inkscape:cy="316.64405"
+     inkscape:window-width="1364"
+     inkscape:window-height="745"
+     inkscape:window-x="0"
+     inkscape:window-y="21"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker12"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path12" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="ArrowWide"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Wide arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc"
+         id="path11" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-30.273373,-88.845828)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264999"
+       d="M 30.273373,182.69436 H 164.3828"
+       id="path1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264999"
+       d="M 58.490291,182.56186 V 92.105484"
+       id="path2" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0"
+       d="m 116.00394,127.70138 v 54.99298"
+       id="path4" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:Serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0"
+       x="58.490292"
+       y="92.105492"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265"
+         x="58.490292"
+         y="92.105492">f(x)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:Serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0"
+       x="164.3828"
+       y="182.69435"
+       id="text5"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.265"
+         x="164.3828"
+         y="182.69435"
+         id="tspan6">x</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:Serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:0.264999, 0.264999;stroke-dashoffset:0"
+       x="116.17666"
+       y="185.9117"
+       id="text7"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="stroke-width:0.265"
+         x="116.17666"
+         y="185.9117">M(x)</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 37.915765,180.99566 c 12.108013,-1.80717 25.324466,1.65929 36.895812,-3.16211 17.514755,-7.29781 19.221266,-29.37012 29.326913,-42.32631 3.6239,-4.64611 6.54968,-7.95368 10.99607,-7.69572 10.09308,0.58555 16.78905,9.05044 22.24842,23.33607 4.19194,10.96912 9.75897,26.42036 23.09606,28.0875 7.23719,0.90464 14.90628,-0.34591 21.88416,1.20689"
+       id="path7"
+       sodipodi:nodetypes="csssssc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 84.353081,171.10524 v 24.76471"
+       id="path8" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 144.56653,195.86995 V 167.19212"
+       id="path9" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#ArrowWide);marker-end:url(#marker12)"
+       d="M 84.485579,191.00834 H 144.56653"
+       id="path10" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:Serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="114.50002"
+       y="195.7235"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265"
+         x="114.50002"
+         y="195.7235">D(x)</tspan></text>
+  </g>
+</svg>
