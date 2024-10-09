@@ -85,7 +85,7 @@
     // Page style
     set page(
         header: align(center)[
-            [#title. #subtitle]
+            #title. #subtitle
             #line(length: 100%, stroke: 0.5pt)
         ],
         footer: align(center, {
