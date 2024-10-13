@@ -140,5 +140,12 @@ $ D xi = E xi^2 - (E xi)^2
 
 $ F(x) = integral_(-oo)^x f(t) d = cases(
     0 "," & x <= a,
-    integral
+
+    integral_(-oo)^a 0 d t + integral_a^x 1/(b - a) d t
+        = (x - a) / (b - a) "," & x in (a, b),
+
+    underbrace(integral_(-oo)^a 0 d t, = 0)
+            + underbrace(integral_a^x 1/(b - a) d t, = 1)
+            + underbrace(integral_b^x 0 d t, = 0)
+        = 1 "," & x >= b
 ) $
