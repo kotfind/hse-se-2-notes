@@ -64,34 +64,33 @@ $ тогда: $ T(n) = cases(
 Max глубина $= log_b n$
 
 На $i$-ом слое: $a^i dot (n/(b^i))^c$ операций
-В листьях (слой $log_b n$): $ a^(log_b n) $ операций
+
+В листьях (слой $log_b n$): $a^(log_b n)$ операций
 
 $
     T(n)
-    = sum^(log_b n)_(k = 0) O(a^i (n/(b^i))^c)
-    = O(sum^(log_b n)_(k = 0) a^i (n/(b^i))^c)
-    = O(n^c sum^(log_b n)_(k = 0) (a/(b^c))^i)
+    = sum^(log_b n)_(i = 0) O(a^i (n/(b^i))^c)
+    = O(sum^(log_b n)_(i = 0) a^i (n/(b^i))^c)
+    = O(n^c sum^(log_b n)_(i = 0) (a/(b^c))^i)
 $
 
-Let $q = a/(b^c)$
+Пусть $q = a/(b^c)$
 
+При $q < 1 <=> a < b^c <=> log_b a < c:$
 $
-    q < 1:
-    a < b^c <=>
-    c > log_b a: \
     O(n^c sum_i q^i)
     <= O(n^c sum^infinity_i q^i)
     = O(n^c dot 1/(1-q))
     = O(n^c)
 $
 
+При $q = 1:$
 $
-    q = 1:
     O(n^c dot log_b n)
 $
 
+При $q > 1:$
 $
-    q = 1:
     O(n^c dot (a/(b^c))^(log_b n))
     = O(n^c dot (a^(log_b n))/(b^(c dot log_b n)))
     = O(n^c dot (a^(log_b n))/(n^c)) = \
