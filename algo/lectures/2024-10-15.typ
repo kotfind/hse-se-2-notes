@@ -143,7 +143,7 @@ $ E("dep"[x_l])
 
 $ E("sz"[x_l]) < 1 + 2 ln n $
 
-$ h_n / ln_n -> gamma, n -> +oo, "где" gamma approx 4.311 $
+$ h_n / (ln n) -> gamma, n -> +oo, "где" gamma approx 4.311 $
 
 = Zip-дерево
 
