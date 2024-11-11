@@ -10,7 +10,7 @@
 Существует парная команда, которая обрабатывает все запомненные и новые
 прерывания.
 
-```
+```c
 while (some condition) {
     запретить все прерывания
     critical section
@@ -27,7 +27,7 @@ while (some condition) {
 
 Общая переменная--замок для всех процессов в наборе
 
-```
+```c
 shared int lock = 0;
 while (some condition) {
     while (lock == 1);
@@ -45,7 +45,7 @@ while (some condition) {
 
 Введем порядок, в котором процессы будут проходить свои критические секции.
 
-```
+```c
 // для двух процессов
 // i-ый процесс
 shared int turn = 0;
@@ -62,7 +62,7 @@ while (some condition) {
 
 === Флаги готовности
 
-```
+```c
 shared int ready[proc_num] = {0};
 
 while (some condition) {
@@ -80,7 +80,7 @@ while (some condition) {
 
 Совмещение идей очередности и готовности.
 
-```
+```c
 // для 0-ого процесса
 shared int ready[2] = {0};
 shared int turn;
@@ -129,16 +129,16 @@ shared переменной нужно атомарно синхронизиро
 
 === Команда Test-And-Set
 
-```
+```c
 int Test-And-Set(int* a) {
     int tmp = *a;
     *a = 1;
     return tmp;
+    // Но выполняется процессором атомарно
 }
-// Но выполняется процессором атомарно
 ```
 
-```
+```c
 shared int lcok = 0;
 while(some condition) {
     while (Test-And-Set(&lock));
@@ -152,15 +152,16 @@ while(some condition) {
 
 === Команда Swap
 
-```
+```c
 void Swap(int* a, int* b) {
     int tmp = *a;
     *a = *b;
     *b = tmp;
+    // Но выполняется процессором атомарно
 }
 ```
 
-```
+```c
 shared int lock = 0;
 int key = 0;
 while (some condition) {
@@ -203,14 +204,14 @@ while (some condition) {
 Допустимые *атомарные* операции:
 + `P(S)`:
 
-    ```
+    ```c
     while (S == 0) block process
     S -= 1
     ```
 
 + `V(S):`
 
-    ```
+    ```c
     S += 1
     ```
 
@@ -235,7 +236,7 @@ while (some condition) {
 + Блокировка Producer (`full`)
 + Блокировка Consumer (`empty`)
 
-```
+```c
 Semaphore mut_ex = 1;
 Semaphore full = 0;
 Semaphore empty = N;
@@ -247,7 +248,7 @@ Semaphore empty = N;
     [Producer:], [Consumer:],
 
     // Producer
-    ```
+    ```c
     while (1) {
         produce_item();
         P(empty);
@@ -259,7 +260,7 @@ Semaphore empty = N;
     ```,
 
     // Consumer
-    ```
+    ```c
     while (1) {
         P(full)
         P(mut_ex)
@@ -279,7 +280,7 @@ Semaphore empty = N;
 
 В ЯП встраиваются определенные конструкции --- мониторы Хора.
 
-```
+```c
 Monitor monitor_name {
     Описание внутренних переменных;
     void m1(...) {...}
@@ -308,7 +309,7 @@ Monitor monitor_name {
 
 === Producer--Consumer
 
-```
+```c
 Monitor PC {
     Condition full, empty;
     int count;
@@ -337,7 +338,7 @@ Monitor PC {
     [Producer:], [Consumer:],
 
     // Producer
-    ```
+    ```c
     while (1) {
         produce_item();
         PC.put();
@@ -345,7 +346,7 @@ Monitor PC {
     ```,
 
     // Consumer
-    ```
+    ```c
     while (1) {
         PC.get();
         consume_item();

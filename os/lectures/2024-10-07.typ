@@ -22,7 +22,7 @@
     [Producer:], [Consumer:],
 
     // Producer
-    ```
+    ```c
     while (1) {
         produce_item();
         send(address, item);
@@ -30,7 +30,7 @@
     ```,
 
     // Consumer
-    ```
+    ```c
     while (1) {
         receive(address, item);
         consume_item();
