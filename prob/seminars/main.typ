@@ -30,3 +30,5 @@
 #datestamp("2024-10-14")
 #include "2024-10-14.typ"
 
+#datestamp("2024-11-11")
+#include "2024-11-11.typ"
