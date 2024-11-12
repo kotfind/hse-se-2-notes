@@ -48,23 +48,27 @@ $ f(x) Delta x underbrace(=, Delta x -> 0) P(x < xi <= x + Delta x) $
 - $forall x: f(x) >= 0$
 - $integral_(-oo)^(oo) f(x) d x = F(+oo) = 1$
 - $integral_(x_1)^(x_2) f(x) d x = F(x_2) - F(x_1) = P(x_1 < xi <= x_2)$
-- Пусть СВ $xi$ имеет плотность распределения $f_xi (x)$, а функция $phi(x)$ ---
-  монотонная, дифференцируемая, детерминированная. СВ $eta = phi(xi)$. $f_eta (y) = ?$:
+- Пусть 
+    - $xi$ имеет плотность распределения $f_xi (x)$
+    - $eta = phi(xi)$, где $phi$ --- монотонная, дифференцируемая, детерминированная функция
 
-    + Пусть $phi(x)$ --- монотонно возрастающая
+    Тогда,
+    $ f_eta (y) = f_xi (phi^(-1) (y)) abs((phi^(-1) (y))') $
 
-        $ F_eta (y) = P(eta <= y) = P(phi(xi) <= y) = P(xi <= phi^(-1) (y)) 
-            = F_xi (phi^(-1) (y)) $
-        $ f_eta (y) = (F_eta (y))' = f_eta (phi^(-1) (y)) (phi^(-1) (y)) $
+    #proof[
+        + Пусть $phi(x)$ --- монотонно возрастающая
 
-    + Пусть $phi(x)$ --- монотонно убывающая
+            $ F_eta (y) = P(eta <= y) = P(phi(xi) <= y) = P(xi <= phi^(-1) (y)) 
+                = F_xi (phi^(-1) (y)) $
+            $ f_eta (y) = (F_eta (y))' = f_xi (phi^(-1) (y)) (phi^(-1) (y))' $
 
-        $ F_eta (y) = P(eta <= y) = P(phi(xi) <= y) = P(xi >= phi^(-1) (y)) 
-            = 1 - F_xi (phi^(-1) (y)) $
-        $ f_eta (y) = (F_eta (y))' = -f_eta (phi^(-1) (y)) underbrace((phi^(-1)
-        (y)), <0) $
+        + Пусть $phi(x)$ --- монотонно убывающая
 
-    + *Итого*, $f_eta (y) = f_xi (phi^(-1) (y)) abs((phi^(-1) (y))')$
+            $ F_eta (y) = P(eta <= y) = P(phi(xi) <= y) = P(xi >= phi^(-1) (y)) 
+                = 1 - F_xi (phi^(-1) (y)) $
+            $ f_eta (y) = (F_eta (y))' = -f_xi (phi^(-1) (y)) underbrace((phi^(-1)
+            (y))', <0) $
+    ]
 
 - Если функция не монотонная, то нужно разделить её на интервалы монотонности и
     применить прошлый пункт

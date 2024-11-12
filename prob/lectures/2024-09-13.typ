@@ -87,14 +87,14 @@ $P: cal(A) -> RR$ --- *вероятность*, если:
         $ P(A) = P(A B) + P(A overline(B)) => P(A) - P(A B) = P(A overline(B)) $
         $ P(B) = P(A B) + P(overline(A) B) => P(B) - P(A B) = P(overline(A) B) $
         $ P(A + B)
-            = P(A B) + P(A overline(B)) + P(overline(A) B) 
+            = P(A B) + P(A overline(B)) + P(overline(A) B) =\
             = P(A B) + P(A) - P(A B) + P(B) - P(A B)
             = P(A) + P(B) - P(A B) $
     ]
 
 + Обобщение теоремы сложения:
     $ P(underbrace(A_1 + A_2, A) + underbrace(A_3, B))
-        = P(A) + P(B)
+        = P(A) + P(B) =\
         = P(A_1) + P(A_2) + P(A_3) - P(A_1 A_2) - P(A_1 A_3) - P(A_2 A_3) + P(A_1 A_2 A_3) $
 
     $ P(sum_i A_i)
