@@ -19,7 +19,7 @@ $ f(x) = cases(
     0 ","                    & x < 0
 ) $
 
-$ E xi = integral_0^oo x lambda e^(-lambda x) d x =
+$ E xi = integral_0^oo x lambda e^(-lambda x) d x
     = { "по частям" } =\
     = underbrace(-e(-lambda x) |_0^oo, 0)
         + 1/lambda underbrace(integral_0^(+oo) lambda e^(-lambda x) d x, = 1 "(из усл. нормировки)")
@@ -63,11 +63,12 @@ $m$ --- математическое ожидание
 
 $sigma^2$ --- дисперсия
 
-$ f(x) = 1/(sqrt(1 pi) sigma) exp(- (x-m)^2 / (2 sigma^2)) $
+$ f(x) = 1/(sqrt(2 pi) sigma) exp(- (x-m)^2 / (2 sigma^2)) $
 
 Симметрична относительно прямой $x = m$
 
-$ f_max = f(m) = 1/(sqrt(1 pi) sigma) $
+$ f_max = f(m) = 1/(sqrt(2 pi) sigma) $
+
 $ lim_(x -> plus.minus oo) f(x) = 0 $
 
 При увеличении $sigma$ график становится шире, но ниже.
@@ -104,7 +105,7 @@ $ f(x) = 1/sqrt(2 pi) exp(- x^2 / 2) $
 
 ==== Уравнение Лапласса
 
-$ Phi_0 (x) = integral_0^x exp(-t^2/x)/sqrt(2 pi) d t $
+$ Phi_0 (x) = integral_0^x exp(-t^2/2)/sqrt(2 pi) d t $
 
 Очень быстро стремится к нулю (для числа пять почти равна нулю (до 7-ого знака))
 
