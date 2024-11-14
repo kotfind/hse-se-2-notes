@@ -130,7 +130,7 @@ shared переменной нужно атомарно синхронизиро
 === Команда Test-And-Set
 
 ```c
-int Test-And-Set(int* a) {
+int TestAndSet(int* a) {
     int tmp = *a;
     *a = 1;
     return tmp;
@@ -141,7 +141,7 @@ int Test-And-Set(int* a) {
 ```c
 shared int lcok = 0;
 while(some condition) {
-    while (Test-And-Set(&lock));
+    while (TestAndSet(&lock));
     critical section
     lock = 0;
     remainder section
@@ -236,16 +236,22 @@ while (some condition) {
 + Блокировка Producer (`full`)
 + Блокировка Consumer (`empty`)
 
-```c
-Semaphore mut_ex = 1;
-Semaphore full = 0;
-Semaphore empty = N;
-```
+#block(breakable: false, grid(
+    columns: (1fr, 1fr),
+    align: center,
+    row-gutter: 15pt,
 
-#grid(
-    columns: 2,
-    row-gutter: 5pt,
-    [Producer:], [Consumer:],
+    grid.cell(colspan: 2)[
+        *Common:*
+
+        ```c
+        Semaphore mut_ex = 1;
+        Semaphore full = 0;
+        Semaphore empty = N;
+        ```
+    ],
+
+    [*Producer:*], [*Consumer:*],
 
     // Producer
     ```c
@@ -270,7 +276,7 @@ Semaphore empty = N;
         consume_item();
     }
     ```
-)
+))
 
 Вдруг совершили ошибку: в `Consumere` перепутали местами строки `P(full)` и
 `P(mut_ex)`. Всё ломается: заходим в состояние вечного ожидания. Эту ошибку
@@ -309,33 +315,38 @@ Monitor monitor_name {
 
 === Producer--Consumer
 
-```c
-Monitor PC {
-    Condition full, empty;
-    int count;
+#block(breakable: false, grid(
+    columns: (1fr, 1fr),
+    align: center,
+    row-gutter: 15pt,
 
-    void put() {
-        if (count == N) full.wait;
-        put_item();
-        ++count;
-        if (count == 1) empty.signal; // Если ждал consumer, то разбудили его
-    }
+    grid.cell(colspan: 2)[
+        *Common:*
+        ```c
+        Monitor PC {
+            Condition full, empty;
+            int count;
 
-    void get() {
-        if (count == 0) empty.wait;
-        get_item();
-        --count;
-        if (count == N - 1) full.signal; // Если ждал producer, то разбудили его
-    }
+            void put() {
+                if (count == N) full.wait;
+                put_item();
+                ++count;
+                if (count == 1) empty.signal; // Если ждал consumer, то разбудили его
+            }
 
-    { count = 0; }
-}
-```
+            void get() {
+                if (count == 0) empty.wait;
+                get_item();
+                --count;
+                if (count == N - 1) full.signal; // Если ждал producer, то разбудили его
+            }
 
-#grid(
-    columns: 2,
-    row-gutter: 5pt,
-    [Producer:], [Consumer:],
+            { count = 0; }
+        }
+        ```
+    ],
+
+    [*Producer:*], [*Consumer:*],
 
     // Producer
     ```c
@@ -352,7 +363,7 @@ Monitor PC {
         consume_item();
     }
     ```
-)
+))
 
 В этом методе хорошо то, что сложно налажать.
 Плохо, что нужен ЯП с соответствующей конструкцией.

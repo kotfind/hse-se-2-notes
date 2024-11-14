@@ -16,10 +16,12 @@
 
 === Задача Producer--Consumer
 
-#grid(
-    columns: 2,
-    row-gutter: 5pt,
-    [Producer:], [Consumer:],
+#block(breakable: false, grid(
+    columns: (1fr, 1fr),
+    align: center,
+    row-gutter: 15pt,
+
+    grid.header[Producer:][Consumer:],
 
     // Producer
     ```c
@@ -36,7 +38,7 @@
         consume_item();
     }
     ```
-)
+))
 
 == Эквивалентность механизмов
 
@@ -45,54 +47,62 @@
 
 === Мониторы Хора через семафоры Дейкстры
 
-```c
-Semaphore mut_ex = 1; // Для организации взаимоисключения
+#block(breakable: false)[
+    ```c
+    Semaphore mut_ex = 1; // Для организации взаимоисключения
 
-// При входе в монитор
-void mon_enter(void) {
-    P(mut_ex);
-}
+    // При входе в монитор
+    void mon_enter(void) {
+        P(mut_ex);
+    }
 
-// Для выхода по return (в конце метода)
-void mon_exit(void) {
-    V(mut_ex);
-}
-
-// Для каждой условной переменной
-Semaphore c_i = 0;
-shared int f_i = 0;
-
-// Для операции wait на условной переменной i
-void wait(i) {
-    f_i += 1;
-    V(mut_ex);
-    P(c_i);
-    f_i -= 1;
-}
-
-// Для операции signal
-void signal_exit(i) {
-    if (f_i) {
-        V(c_i);
-    } else {
+    // Для выхода по return (в конце метода)
+    void mon_exit(void) {
         V(mut_ex);
     }
-}
-```
+
+    // Для каждой условной переменной
+    Semaphore c_i = 0;
+    shared int f_i = 0;
+
+    // Для операции wait на условной переменной i
+    void wait(i) {
+        f_i += 1;
+        V(mut_ex);
+        P(c_i);
+        f_i -= 1;
+    }
+
+    // Для операции signal
+    void signal_exit(i) {
+        if (f_i) {
+            V(c_i);
+        } else {
+            V(mut_ex);
+        }
+    }
+    ```
+]
 
 === Очереди сообщений через Семафоры Дейкстры
 
-```c
-// Для очереди сообщений A
-Semaphore Amut_ex = 1;
-Semaphore Afull = 0;
-Semaphore Aempty = N; // N - системный размер буфера
-```
-
-#grid(
+#block(breakable: false, grid(
     columns: (1fr, 1fr),
     align: center,
     row-gutter: 15pt,
+
+    grid.cell(colspan: 2)[
+        *Common:*
+
+        ```c
+        // Для очереди сообщений A
+        Semaphore Amut_ex = 1;
+        Semaphore Afull = 0;
+        Semaphore Aempty = N; // N - системный размер буфера
+        ```
+    ],
+
+    [*Producer:*], [*Consumer:*],
 
     ```c
     void send (A, msg) {
@@ -114,49 +124,54 @@ Semaphore Aempty = N; // N - системный размер буфера
     }
     ```
 )
+)
 
 === Семафоры Дейкстры через Мониторы Хора
 
-```c
-Monitor sem {
-    unsigned int count;
-    Condition c;
+#block(breakable: false)[
+    ```c
+    Monitor sem {
+        unsigned int count;
+        Condition c;
 
-    void P(void) {
-        if (count == 0) {
-            c.wait;
+        void P(void) {
+            if (count == 0) {
+                c.wait;
+            }
+            count -= 1;
         }
-        count -= 1;
-    }
 
-    void V(void) {
-        count += 1;
-        c.signal;
-    }
+        void V(void) {
+            count += 1;
+            c.signal;
+        }
 
-    { count = N; }
-}
-```
+        { count = N; }
+    }
+    ```
+]
 
 === Семафоры Дейкстры через Очереди сообщений
 
-```c
-void Sem_init(int N) {
-    int i;
-    создать очередь сообщений m;
-    for (int i = 0; i < N; ++i) {
+#block(breakable: false)[
+    ```c
+    void Sem_init(int N) {
+        int i;
+        создать очередь сообщений m;
+        for (int i = 0; i < N; ++i) {
+            send(M, msg);
+        }
+    }
+
+    void Sem_P() {
+        receive(M, msg);
+    }
+
+    void Sem_V() {
         send(M, msg);
     }
-}
-
-void Sem_P() {
-    receive(M, msg);
-}
-
-void Sem_V() {
-    send(M, msg);
-}
-```
+    ```
+]
 
 == Пример решения задачи
 
@@ -173,18 +188,22 @@ void Sem_V() {
 - Пчела, когда бочка полная
 - Медведь, когда бочка пуста
 
-```c
-Semaphore bee = 1;
-Semaphore bear = 0;
-shared int Count = 0;
-```
-
-#grid(
+#block(breakable: false, grid(
     columns: (1fr, 1fr),
     align: center,
     row-gutter: 15pt,
 
-    [Пчела:], [Медведь:],
+    grid.cell(colspan: 2)[
+        *Common:*
+
+        ```c
+        Semaphore bee = 1;
+        Semaphore bear = 0;
+        shared int Count = 0;
+        ```
+    ],
+
+    [*Пчела:*], [*Медведь:*],
 
     ```c
     while (1) {
@@ -207,21 +226,25 @@ shared int Count = 0;
         // идет бродить
     }
     ```
-)
+))
 
 === Через очереди сообщений
 
-```c
-shared int Count = 0;
-MessageQueue bee, bear;
-```
-
-#grid(
+#block(breakable: false, grid(
     columns: (1fr, 1fr),
     align: center,
     row-gutter: 15pt,
 
-    [Пчела:], [Медведь:],
+    grid.cell(colspan: 2)[
+        *Common:*
+
+        ```c
+        shared int Count = 0;
+        MessageQueue bee, bear;
+        ```
+    ],
+
+    [*Пчела:*], [*Медведь:*],
 
     ```c
     while (1) {
@@ -245,44 +268,49 @@ MessageQueue bee, bear;
         // идет бродить
     }
     ```
-)
+))
 
 === Через мониторы
 
-```c
-Monitor bb {
-    Condition cbee, cbear;
-    int Count;
-
-    void bee() {
-        if (Count == N) {
-            cbee.wait;
-        }
-        Count++;
-        if (Count == N) {
-            cbear.signal;
-        } else {
-            cbee.signal;
-        }
-    }
-
-    void bear() {
-        if (Count != N) {
-            cbear.wait;
-            Count = 0;
-            cbee.signal
-        }
-    }
-
-    { Count = 0; }
-}
-```
-#grid(
+#block(breakable: false, grid(
     columns: (1fr, 1fr),
     align: center,
     row-gutter: 15pt,
 
-    [Пчела:], [Медведь:],
+    grid.cell(colspan: 2)[
+        *Common:*
+
+        ```c
+        Monitor bb {
+            Condition cbee, cbear;
+            int Count;
+
+            void bee() {
+                if (Count == N) {
+                    cbee.wait;
+                }
+                Count++;
+                if (Count == N) {
+                    cbear.signal;
+                } else {
+                    cbee.signal;
+                }
+            }
+
+            void bear() {
+                if (Count != N) {
+                    cbear.wait;
+                    Count = 0;
+                    cbee.signal
+                }
+            }
+
+            { Count = 0; }
+        }
+        ```
+    ],
+
+    [*Пчела:*], [*Медведь:*],
 
     ```c
     while (1) {
@@ -297,7 +325,7 @@ Monitor bb {
         // идет бродить
     }
     ```
-)
+))
 
 = Планирование процессов
 
@@ -322,7 +350,7 @@ Monitor bb {
 
 - *Краткосрочное планирование* (например, планирование запуска процессов)
 
-    Решение принимается часто, каждый квант времени (каждые ~100мс).
+    Решение принимается часто, каждый квант времени (каждые \~100мс).
 
 == Цели планирования
 
@@ -390,7 +418,7 @@ Monitor bb {
 
 Типы планирования:
 - *Невытесняющее*: принимаем только вынужденные решения
-- *Вытесняющее*: принимаем только и вынужденные, и невынужденные решения
+- *Вытесняющее*: принимаем и вынужденные, и невынужденные решения
 
 == Конкретные алгоритмы
 
