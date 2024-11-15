@@ -160,7 +160,8 @@ $xi_1$ и $xi_2$ независимы $<=>$ $f_xi (x, y) = f_(xi_1) (x) f_(xi_2)
 - $"cov"(xi, eta) = E(xi - E xi)(eta - E eta) = ...
     = E xi eta - E xi E eta$
 - $"cov"(a xi + b, c eta + d) = a b "cov"(xi, eta)$
-- $abs(rho_(xi eta)) = abs("cov"(eta, xi)) / (sigma_xi sigma_eta) <= 1$
+- $abs(rho_(xi eta)) = abs("cov"(eta, xi)) / (sigma_xi sigma_eta) <= 1$ ---
+  коэффициент корреляции
 
     $abs("cov"(eta, xi)) <= sigma_xi sigma_eta$
 

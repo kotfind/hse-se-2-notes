@@ -68,3 +68,34 @@
 ) = {
     blk(title: "Док-во", body)
 }
+
+
+#let match(..args) = {
+    let cases = ()
+
+    let pushed_otherwise_case = false
+    for arg in args.pos() {
+        /// each line should be in form
+        ///     '{value}, {condition};'
+        /// or (for the last line)
+        ///     '{value};'
+        assert(arg.len() == 2 or arg.len() == 1);
+
+        let value = arg.at(0)
+
+        if arg.len() == 2 {
+            assert(pushed_otherwise_case == false)
+
+            let cond = arg.at(1)
+
+            cases.push($#value", " space &"if" space #cond$)
+        } else {
+            cases.push($#value", " space &"otherwise"$)
+
+            pushed_otherwise_case = true
+        }
+    }
+
+    math.cases(..args.named(), ..cases)
+}
+
