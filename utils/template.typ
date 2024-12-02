@@ -90,7 +90,7 @@
         ],
         footer: align(center, {
             line(length: 100%, stroke: 0.5pt)
-            counter(page).display("1")
+            context counter(page).display("1")
         }),
     )
 
