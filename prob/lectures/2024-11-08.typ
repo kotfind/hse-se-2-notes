@@ -24,9 +24,9 @@ $xi_1$ и $xi_2$ независимы $<=>$ $f_xi (x, y) = f_(xi_1) (x) f_(xi_2)
 #def[
     Случайный вектор $xi = (xi_1, ...,  xi_n)$ имеет равномерное распределение в
     области $D in RR^n$, если
-    $ f_xi (x_1, ...,  x_n) = cases(
-        c "," &"if" (x_1, ...,  x_n) in D,
-        0 "," &"oth"
+    $ f_xi (x_1, ...,  x_n) = match(
+        c, (x_1, ...,  x_n) in D;
+        0;
     ) $
 
     При $n = 2: c = 1/(S_D)$
@@ -36,22 +36,22 @@ $xi_1$ и $xi_2$ независимы $<=>$ $f_xi (x, y) = f_(xi_1) (x) f_(xi_2)
     Пусть $xi = (xi_1, xi_2)$ распределен равномерно в прямоугольнике с
     углами в $(0, 0), (1, 1)$. Хотим проверить [не]зависимость компонент.
 
-    $ f_xi (x, y) = cases(
-        1 "," &"if" x in (0, 1) and y in (0, 1),
-        0 "," &"oth"
+    $ f_xi (x, y) = match(
+        1, x in (0, 1) and y in (0, 1);
+        0;
     ) $
 
     $ f_(xi_1) (x) = integral_(-oo)^(+oo) f_xi (x, y) d y
-        = cases(
-            integral_0^1 1 d y = 1 "," &"if" x in (0, 1),
-            0 "," &"if" x in.not (0, 1),
+        = match(
+            integral_0^1 1 d y = 1, x in (0, 1);
+            0,                      x in.not (0, 1);
         )
     $
 
     $ f_(xi_2) (y) = integral_(-oo)^(+oo) f_xi (x, y) d x
-        = cases(
-            integral_0^1 1 d x = 1 "," &"if" y in (0, 1),
-            0 "," &"if" y in.not (0, 1),
+        = match(
+            integral_0^1 1 d x = 1, y in (0, 1);
+            0,                      y in.not (0, 1);
         )
     $
 
@@ -60,27 +60,27 @@ $xi_1$ и $xi_2$ независимы $<=>$ $f_xi (x, y) = f_(xi_1) (x) f_(xi_2)
 ]
 
 #blk(title: [Пример 2])[
-    Пусть $xi = (xi_1, xi_2)$ распределен равномерно в круге $c = (0, 0), r =
-    r$.
+    Пусть $xi = (xi_1, xi_2)$ распределен равномерно в круге с центром $(0, 0)$
+    и радиусом $r$.
 
-    $ f_xi (x, y) = cases(
-        1/(pi r^2) "," &"if" x^2 + y^2 <= R^2,
-        0 "," &"oth"
+    $ f_xi (x, y) = match(
+        1/(pi r^2), x^2 + y^2 <= R^2;
+        0;
     ) $
 
     $ f_(xi_1) (x) = integral_(-oo)^(+oo) f(x, y) d y
         = integral_(-sqrt(R^2 - x^2))^(sqrt(R^2 - x^2)) 1/(pi r^2) d y
-        = cases(
-            (2 sqrt(R^2 - x^2)) / (pi r^2) "," &"if" abs(x) <= r,
-            0 "," &"oth"
+        = match(
+            (2 sqrt(R^2 - x^2)) / (pi r^2), abs(x) <= r;
+            0;
         )
     $
 
     $ f_(xi_2) (y) = integral_(-oo)^(+oo) f(x, y) d x
         = integral_(-sqrt(R^2 - y^2))^(sqrt(R^2 - y^2)) 1/(pi r^2) d x
-        = cases(
-            (2 sqrt(R^2 - y^2)) / (pi r^2) "," &"if" abs(y) <= r,
-            0 "," &"oth"
+        = match(
+            (2 sqrt(R^2 - y^2)) / (pi r^2), abs(y) <= r;
+            0;
         )
     $
 
@@ -91,8 +91,9 @@ $xi_1$ и $xi_2$ независимы $<=>$ $f_xi (x, y) = f_(xi_1) (x) f_(xi_2)
 == Математическое ожидание
 
 #def[
-    #defitem[Математическим ожиданием] вектора $xi = (xi_1, xi_2)$ называется
-    вектор $E xi = (m_1, ..., m_n)$, где $m_i = E xi_i$.
+    #defitem[Математическим ожиданием] вектора $xi = (xi_1, ..., xi_n)$ называется
+    вектор
+    $ E xi = (E xi_1, ..., E xi_n). $
 ]
 
 === Свойства математического ожидания
@@ -104,7 +105,7 @@ $xi_1$ и $xi_2$ независимы $<=>$ $f_xi (x, y) = f_(xi_1) (x) f_(xi_2)
 
         $ E(underbrace(xi_1 + xi_2, eta))
             = sum_i sum_j (x_i + y_j) p_(i j)
-            = sum_i sum_j x_i p_i j + sum_i sum_j y_j p_i j =\
+            = sum_i sum_j x_i p_(i j) + sum_i sum_j y_j p_(i j) =\
             = sum_i x_i p_(i dot) + sum_j y_j p_(dot j)
             = E xi_1 + E xi_2
         $
@@ -159,7 +160,7 @@ $xi_1$ и $xi_2$ независимы $<=>$ $f_xi (x, y) = f_(xi_1) (x) f_(xi_2)
 - $"cov"(xi, eta) = "cov"(eta, xi)$
 - $"cov"(xi, eta) = E(xi - E xi)(eta - E eta) = ...
     = E xi eta - E xi E eta$
-- $"cov"(a xi + b, c eta + d) = a b "cov"(xi, eta)$
+- $"cov"(a xi + b, c eta + d) = a c "cov"(xi, eta)$
 - $abs(rho_(xi eta)) = abs("cov"(eta, xi)) / (sigma_xi sigma_eta) <= 1$ ---
   коэффициент корреляции
 

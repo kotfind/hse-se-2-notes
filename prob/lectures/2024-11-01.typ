@@ -56,8 +56,7 @@ $ P(xi >= 10 000) = 4000 / 10000 = 0.4$
 #def[
     #defitem[Функцией распределения случайного вектора] $xi = (xi_1, ...,
     xi_n)$ называется функция
-    $ F_xi (x_1, ...,  x_n) = P(xi_1 < x_1, ..., xi_n <= x_n)
-        := P(xi_1 < x_1 and ... and xi_n <= x_n) $
+    $ F_xi (x_1, ...,  x_n) := P(xi_1 < x_1 and ... and xi_n <= x_n) $
 ]
 
 Пусть $n = 2:$
@@ -114,8 +113,8 @@ $F_xi (x y) = P(xi_1 <= x, xi_2 <= y)$
 
 $ P_(i dot) := sum_(j = 1)^k p_(i j) $
 
-$ P(xi_1 = x_1) = P_(1 dot) $
-$ P(xi_2 = y_1) = P_(dot 1) $
+$ P(xi_1 = x_1) = p_(1 dot) $
+$ P(xi_2 = y_1) = p_(dot 1) $
 
 #def[
     Компоненты $xi_1, xi_2$ дискретного вектора $xi = (xi_1, xi_2)$
@@ -145,7 +144,7 @@ $ f(x, y) = (diff^2 F(x, y)) / (diff x diff y) $
     = P(a_1 <= xi_1 <= a_2, b_1 <= xi_2 <= b_2) $
 - $P(xi in D) = integral.double_D f(x, y) d x d y$
 - $ F_(xi_1) (x) = F_xi (x, +oo)
-    = integral_(-oo)^x integral_(-oo)^(+o) f(t_1, t_2) d t_2 d t_1 $
+    = integral_(-oo)^x integral_(-oo)^(+oo) f(t_1, t_2) d t_2 d t_1 $
 
     $ f_(xi_1) (x) = d/(d x) F_(xi_1) (x)
         = d/(d x) integral_(-oo)^x integral_(-oo)^(+oo) f(t_1, t_2) d t_2 d t_1
