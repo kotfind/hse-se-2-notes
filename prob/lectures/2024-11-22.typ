@@ -13,35 +13,35 @@
     $x_m$,      $p_(m 1)$,  $...$,      $p_(m k)$
 ))
 
-$ P(xi = x_i | eta = y_i)
-    = P(xi = x_i and eta = y_i) / P(eta = y_i)
-    = p_(i j) / p(dot i) $
+$ P(xi = x_i | eta = y_j)
+    = P(xi = x_i and eta = y_j) / P(eta = y_j)
+    = p_(i j) / p_(dot j) $
 
 #def[
     Набор вероятностей $p_(i j) / p_(dot j), forall i = 1...m$ называется
-    #defitem[условным распределением вероятности] $xi$ при условии ${eta = y_i}$.
+    #defitem[условным распределением вероятности] $xi$ при условии ${eta = y_j}$.
 ]
 
 #def[
-    #defitem[Условной функцией распределения] $xi$ при условии ${eta = y_i}$
-    называется $ F_xi (x | y_i) = P(xi <= x | eta = y_i) $
+    #defitem[Условной функцией распределения] $xi$ при условии ${eta = y_j}$
+    называется $ F_xi (x | y_j) = P(xi <= x | eta = y_j) $
 ]
 
 #def[
-    #defitem[Условным математическим ожиданием] $xi$ при условии ${eta = y_i}$
+    #defitem[Условным математическим ожиданием] $xi$ при условии ${eta = y_j}$
     называется
-    $ E(xi | eta = y_i)
-        = sum_(i = 1)^m x_i P(xi = x_i | eta = y_i)
+    $ E(xi | eta = y_j)
+        = sum_(i = 1)^m x_i P(xi = x_i | eta = y_j)
         = sum_(i = 1)^m x_i p_(i j) / p_(dot j) $
 ]
 
-- Если $eta$ уже зафиксирована, то $E(xi | eta = y_i)$ --- число.
+- Если $eta$ уже зафиксирована, то $E(xi | eta = y_j)$ --- число.
 - Если $eta$ ещё неизвестна, то $E(xi | eta)$ --- функция от аргумента $eta$.
 
 #figure(table(
     columns: 4,
     align: center,
-    $E(xi | eta)$, $E(xi | eta = y_i)$, $...$, $E(xi | eta = y_k)$,
+    $E(xi | eta)$, $E(xi | eta = y_1)$, $...$, $E(xi | eta = y_k)$,
     $P$,           $p_(dot 1)$,         $...$, $p_(dot k)$
 ))
 
