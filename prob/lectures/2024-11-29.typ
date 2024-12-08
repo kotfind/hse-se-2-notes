@@ -112,7 +112,7 @@
     При $n = 2:$
 
     $ m_(eta | xi = x) = m_eta + cov(xi, eta) / (D xi) (x - m_xi) $
-    $ D(eta | xi = x) = D(eta) - (cov(xi, eta))^2 / (D xi) $
+    $ D(eta | xi = x) = D eta - (cov(xi, eta))^2 / (D xi) $
 
 
 #blk(title: [Пример])[
