@@ -37,11 +37,11 @@
 ]
 
 #def[
-    Случайный вектор $xi = (xi_1, ..., xi_n)$ имеет нормальное (гауссовское)
+    Случайный вектор $xi = (xi_1, ..., xi_n)^T$ имеет нормальное (гауссовское)
     распределение $xi ~ N(m, K)$, если плотность распределения имеет вид:
 
     - в векторном виде:
-        $ f(x) = 1/sqrt((2pi)^2 det K) exp(-1/2 ((x - m)^T K_(-1) (x - m))) $
+        $ f(x) = 1/sqrt((2pi)^2 det K) exp(-1/2 ((x - m)^T K^(-1) (x - m))) $
 
     - в виде функции от $n$ переменных:
 
@@ -89,15 +89,31 @@
 
 - *Теорема о нормальной корреляции*
 
-    Пусть $xi = (xi_1, ...,  xi_n) ~ N(m, K)$. Хотим условное распределение:
-    $ L(
-            underbrace((xi_1, ...,  xi_l), eta_1) |
-            underbrace((xi_(l + 1), ..., xi_n), eta_2) = x
-        ) ~ N(E(eta_1 | eta_2 = x), K_(eta_1 | eta_2 = x)) $
+    Пусть 
 
-    #proof[
-        *\*Тут должно быть доказательство\**
-    ]
+    $ z = (z_1, ..., z_n)^T ~ N(m_z, K_z) $
+    $ eta = (z_1, ...,  z_l)^T $
+    $ xi = (z_(l+1), ...,  z_m)^T $
+    $ m_z^T = (m_eta^T, m_xi^T) $
+    $ K_z = mat(
+        K_(eta eta), K_(eta xi);
+        K_(xi eta), K_(xi xi)
+    ) $
+
+    Тогда
+    
+    $ (eta | xi = x) ~ N(m_(eta | xi = x), K_(eta | xi = x)), $
+
+    где
+
+    $ m_(eta | xi = x) = m_eta + K_(eta xi) K_(eta eta)^(-1) (x - m_xi) $
+    $ K_(eta | xi = x) = K_(eta eta) - K_(eta xi) K_(xi xi)^(-1) K_(eta xi)^T $
+
+    При $n = 2:$
+
+    $ m_(eta | xi = x) = m_eta + cov(xi, eta) / (D xi) (x - m_xi) $
+    $ D(eta | xi = x) = D(eta) - (cov(xi, eta))^2 / (D xi) $
+
 
 #blk(title: [Пример])[
     На бирже акциями торгуют $A$ и $B$.
