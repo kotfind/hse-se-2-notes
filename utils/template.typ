@@ -43,7 +43,8 @@
 #let conf(
     title: none,
     subtitle: none,
-    author: none,
+    notes_author: none,
+    teacher: none,
     year: none,
     outline_opts: none,
     body
@@ -51,7 +52,7 @@
     // Set metadata
     set document(
         title: [#title. #subtitle],
-        author: author,
+        author: notes_author,
     )
 
     [
@@ -67,15 +68,24 @@
 
     // Title page
     align(center + horizon, [
-        #text(30pt, weight: "bold")[
-            #title
+        #text(27pt, weight: "bold", title)
 
-            #subtitle
-        ]
+        #text(25pt, weight: "bold", subtitle)
 
-        #text(25pt, author)
+        #text(16pt, grid(
+            columns: 2,
+            align: (right, left),
+            row-gutter: 1em,
+            column-gutter: 0.5em,
 
-        #text(20pt, year)
+            [Автор конспектов:],
+            notes_author,
+
+            if teacher != none { [Преподаватель:] },
+            if teacher != none { teacher },
+        ))
+
+        #text(16pt, year)
     ])
 
     // Outline

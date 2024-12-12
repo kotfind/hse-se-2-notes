@@ -4,7 +4,7 @@
 #show: body => conf(
     title: "Теория Вероятностей",
     subtitle: "Домашние задания",
-    author: "Савва Чубий, БПИ233",
+    notes_author: "Чубий Савва Андреевич",
     year: [2024--2025],
     outline_opts: (
         depth: 1,

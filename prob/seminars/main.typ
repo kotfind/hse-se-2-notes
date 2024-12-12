@@ -4,7 +4,8 @@
 #show: body => conf(
     title: "Теория Вероятностей",
     subtitle: "Семинары",
-    author: "Савва Чубий, БПИ233",
+    notes_author: "Чубий Савва Андреевич",
+    teacher: "Сизых Наталья Васильевна",
     year: [2024--2025],
     outline_opts: (
         depth: 1,
