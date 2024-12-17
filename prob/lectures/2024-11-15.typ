@@ -94,14 +94,20 @@
 
 == Формула свертки
 
-Пусть $xi_1$ и $xi_2$ --- независимы, $xi_1 ~ f_(xi_1) (x), xi_2 ~ f_(xi_2) (y)$,
-$eta = xi_1 + xi_2$. $f_eta (z) = ?$
+Пусть $xi_1$ и $xi_2$ --- независимы, тогда
+$ f_(xi_1 + xi_2) (y)
+    = integral_(-oo)^(+oo) f_xi_1 (x) f_xi_2 (y - x)  d x. $
 
-$ F_eta(z) &= P(eta <= z) = P(xi_1 + xi_2 <= z)
-    = integral.double_(x + y <= z) f_(xi_1) (x) f_(xi_2) (y) d y d x =
-    = integral_(-oo)^(+oo) integral_(-oo)^(z - x) f_(xi_1) (x) f_(xi_2) (y) d y d x $
+#proof[
+    $ F_(xi_1 + xi_2) (y) = P(xi_1 + xi_2 <= y) =\
+        = integral.double_(x_1 + x_2 <= y) f_(xi_1) (x_1) f_(xi_2) (x_2) d x_2 d x_1
+        = integral_(-oo)^(+oo) integral_(-oo)^(z - x) f_(xi_1) (x) f_(xi_2) (y) d x_2 d x_1 $
 
-$ f_eta (z) = d/(d z) F_(eta) (z) = integral_(-oo)^(+oo) f_(xi_1) (x) f_(xi_2)(z - x) d x $
+    $ f_(xi_1 + xi_2) (y)
+        = d/(d y) F_(xi_1 + xi_2) (y)
+        = integral_(-oo)^(+oo) f_(xi_1) (x) f_(xi_2)(y - x) d x $
+]
+
 
 === Пример
 
